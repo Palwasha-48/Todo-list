@@ -1,6 +1,6 @@
 "use client"
-import  React, {useState, useEffect} from 'react'
-const page = () => {
+import  React, {useState} from 'react'
+const Page = () => {
     const[task,settask] = useState("")
     const[maintask,setmaintask] = useState([])
 const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
@@ -36,7 +36,7 @@ const rendertask = maintask.map((t, i) =>(
         </div>
         <div className="pt-8">
             <form onSubmit={submitHandler}>
-            <input type="text" placeholder="Add a new task" value={task} onChange={(e) => settask((prevTask) => e.target.value)
+            <input type="text" placeholder="Add a new task" value={task} onChange={(e) => settask(() => e.target.value)
                    }
                    className= "pl-4 rounded-xl bg-pink-200 w-96 h-12 "/>
             </form>
@@ -59,4 +59,4 @@ const rendertask = maintask.map((t, i) =>(
     </>
   )
 }
-export default page
+export default Page
