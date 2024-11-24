@@ -1,26 +1,34 @@
 "use client"
+
 import  React, {useState} from 'react'
-const Page = () => {
-    const[task,settask] = useState("")
-    const[maintask,setmaintask] = useState([])
+
+
+const page = () => {
+    const [task,setTask] = useState("")
+    const [maintask,setMaintask] = useState<{ task: string }[]>([])
+
 const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-     e.preventDefault(); 
-    setmaintask([...maintask,{task}])
+    e.preventDefault(); 
+    setMaintask([...maintask , { task }])
+
     console.log(maintask)
-    settask("")
+
+    setTask("")
 } 
+
 const deleteHandler = (i: number) => {
- const copytask = [...maintask]
- copytask.splice(i,1)
- setmaintask(copytask)
+ const copyTask = [...maintask]
+ copyTask.splice(i,1)
+ setMaintask(copyTask)
 }
 
 
-const rendertask = maintask.map((t, i) =>(
+const renderTask = maintask.map((t, i) =>(
         <li key={i}>
         <div>
             <h3>{t.task}</h3>
         </div>
+
         <button onClick = {() => {
             deleteHandler(i)
         }}
@@ -28,35 +36,46 @@ const rendertask = maintask.map((t, i) =>(
             Delete
         </button>
         </li>
+    
     ))
-    return (
+
+return (
     <>
         <div className= "text-6xl pt-20 font-serif text-center text-pink-950">
             TO-DO LIST
         </div>
+
         <div className="pt-8">
             <form onSubmit={submitHandler}>
-            <input type="text" placeholder="Add a new task" value={task} onChange={(e) => settask(() => e.target.value)
-                   }
-                   className= "pl-4 rounded-xl bg-pink-200 w-96 h-12 "/>
+            <input
+                type="text"
+                placeholder="Add a new task"
+                value={task}
+                onChange={(e) => setTask(e.target.value)}
+                className= "pl-4 rounded-xl bg-pink-200 w-96 h-12 "/>
             </form>
+
         </div>
+
         <div className= "pt-8"> 
-            <button 
-            onClick={submitHandler}
+            <button type='submit'
             className= "bg-amber-800 hover:bg-amber-600 rounded-full w-28 h-12 text-2xl font-serif shadow-2xl">
                 Click
             </button>
         </div>
+
         <div className="text-amber-900 pt-10 font-serif text-4xl text-left pl-72">
             <ul>
-                {rendertask}
+                {renderTask}
             </ul>
         </div>  
+
         <footer className="pb-9 pt-9 align-text-bottom text-pink-950">
             Created by PALWASHA
         </footer>
     </>
   )
 }
-export default Page
+
+export default page
+
