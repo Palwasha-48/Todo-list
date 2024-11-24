@@ -1,9 +1,9 @@
 "use client"
 
-import  React, {useState} from 'react'
+import  {useState} from 'react'
 
 
-const page = () => {
+const Page = () => {
     const [task,setTask] = useState("")
     const [maintask,setMaintask] = useState<{ task: string }[]>([])
 
@@ -77,5 +77,5 @@ return (
   )
 }
 
-export default page
+export default Page
 
