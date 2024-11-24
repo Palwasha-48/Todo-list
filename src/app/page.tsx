@@ -28,7 +28,7 @@ const rendertask = maintask.map((t, i) =>(
             Delete
         </button>
         </li>
-    )
+    ))
     return (
     <>
         <div className= "text-6xl pt-20 font-serif text-center text-pink-950">
