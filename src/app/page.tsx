@@ -3,7 +3,7 @@
 import React {useState} from 'react'
 
 
-const Page = () => {
+const page = () => {
     const [task,setTask] = useState("")
     const [maintask,setMaintask] = useState<{ task: string }[]>([])
 
