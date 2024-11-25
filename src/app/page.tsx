@@ -1,11 +1,11 @@
 "use client"
 
-import React {useState} from 'react'
+import React, {useState} from 'react'
 
 
 const page = () => {
-    const [task,setTask] = useState("")
-    const [maintask,setMaintask] = useState<{ task: string }[]>([])
+    const [task, setTask] = useState("")
+    const [maintask, setMaintask] = useState<{ task: string }[]>([])
 
 const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); 
