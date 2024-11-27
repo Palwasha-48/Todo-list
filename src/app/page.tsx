@@ -4,10 +4,12 @@ import { useState } from "react"
 
 
 const File = () => {
-    const [task,setTask] = useState("")
-    const [maintask,setMaintask] = useState<{ task: string }[]>([])
+    
+    const [task, setTask] = useState("")
+    const [maintask, setMaintask] = useState<{ task: string }[]>([])
 
-const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+const submitHandler = (e: { preventDefault: () => {
+    
     e.preventDefault(); 
     setMaintask([...maintask , { task }])
 
@@ -17,14 +19,18 @@ const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
 } 
 
 const deleteHandler = (i: number) => {
+    
  const copyTask = [...maintask]
- copyTask.splice(i,1)
+ copyTask.splice (i,1)
+    
  setMaintask(copyTask)
 }
 
 
-const renderTask = maintask.map((t, i) =>(
+const renderTask = maintask.map((t, i) => (
+    
         <li key={i}>
+            
         <div>
             <h3>{t.task}</h3>
         </div>
@@ -59,6 +65,7 @@ return (
 
         <div className= "pt-8"> 
             <button type="submit"
+            onClick={submitHandler}
             className= "bg-amber-800 hover:bg-amber-600 rounded-full w-28 h-12 text-2xl font-serif shadow-2xl">
                 Click
             </button>
