@@ -2,14 +2,13 @@
 
 import { useState } from "react"
 
-
 const File = () => {
-    
-    const [task, setTask] = useState("")
-    const [maintask, setMaintask] = useState<{ task: string }[]>([])
 
-const submitHandler = (e: { preventDefault: () => {
-    
+    const [task,setTask] = useState("")
+    const [maintask,setMaintask] = useState<{ task: string }[]>([])
+
+const submitHandler = (e: { preventDefault: () => void }) => {
+
     e.preventDefault(); 
     setMaintask([...maintask , { task }])
 
@@ -19,26 +18,26 @@ const submitHandler = (e: { preventDefault: () => {
 } 
 
 const deleteHandler = (i: number) => {
-    
+
  const copyTask = [...maintask]
- copyTask.splice (i,1)
-    
+ copyTask.splice(i,1)
+
  setMaintask(copyTask)
 }
 
+const renderTask = maintask.map((t, i) =>(
 
-const renderTask = maintask.map((t, i) => (
-    
         <li key={i}>
-            
         <div>
             <h3>{t.task}</h3>
         </div>
 
         <button onClick = {() => {
+
             deleteHandler(i)
         }}
             className="text-xs bg-rose-950 w-12 h-6 text-white">
+
             Delete
         </button>
         </li>
@@ -71,7 +70,7 @@ return (
             </button>
         </div>
 
-        <div className="text-amber-900 pt-10 font-serif text-4xl text-left pl-72">
+        <div className="text-amber-900 pt-10 font-serif text-4xl text-left pl-20">
             <ul>
                 {renderTask}
             </ul>
